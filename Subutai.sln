@@ -1,0 +1,99 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A3283B17-3CDC-4E67-9694-FBF9E6EBF73E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Domain.Model", "src\Subutai.Domain.Model\Subutai.Domain.Model.csproj", "{5CC592B8-00CB-439F-AEEE-D0307580FC0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{25722990-D4D8-45BF-AED5-9EB8456BDE77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Repository.SqlRepository", "src\Repositories\Subutai.Repository.SqlRepository\Subutai.Repository.SqlRepository.csproj", "{23200DF8-44DD-404D-9C48-41D1F6C6D514}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{798FA778-4BB9-42A7-AB25-5535757E5131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Domain.Ports", "src\Subutai.Domain.Ports\Subutai.Domain.Ports.csproj", "{B4528906-51ED-4B2B-8C85-635D0229778A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Service", "src\Subutai.Service\Subutai.Service.csproj", "{723E41AD-CB21-4FEC-B04E-B47A440F7CB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.WebApi", "src\Subutai.WebApi\Subutai.WebApi.csproj", "{8C6747D9-D63C-4BE8-ACD5-ACE8F0292F74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{D85D51B1-8BC8-4F40-8859-EA8099008238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.WebApi.Tests", "tests\Subutai.WebApi.Tests\Subutai.WebApi.Tests.csproj", "{386FA2B6-37DB-4F75-94CA-542E9BAF0C37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Service.Tests", "tests\Subutai.Service.Tests\Subutai.Service.Tests.csproj", "{6ED46D03-BE09-44F9-8C74-FF7444E33159}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Repository.SqlRepository.Tests", "tests\Subutai.Repository.SqlRepository.Tests\Subutai.Repository.SqlRepository.Tests.csproj", "{126AD993-CD74-4194-9710-3C9259BAEA54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Aspire.Apphost", "src\Subutai.Aspire.Apphost\Subutai.Aspire.Apphost.csproj", "{99674264-42AD-4CD6-A5E5-8C8829438B7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subutai.Aspire.ServiceDefaults", "src\Subutai.Aspire.ServiceDefaults\Subutai.Aspire.ServiceDefaults.csproj", "{015F0626-F854-4DB4-99E4-1F27C1158192}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CC592B8-00CB-439F-AEEE-D0307580FC0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC592B8-00CB-439F-AEEE-D0307580FC0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC592B8-00CB-439F-AEEE-D0307580FC0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC592B8-00CB-439F-AEEE-D0307580FC0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23200DF8-44DD-404D-9C48-41D1F6C6D514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23200DF8-44DD-404D-9C48-41D1F6C6D514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23200DF8-44DD-404D-9C48-41D1F6C6D514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23200DF8-44DD-404D-9C48-41D1F6C6D514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4528906-51ED-4B2B-8C85-635D0229778A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4528906-51ED-4B2B-8C85-635D0229778A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4528906-51ED-4B2B-8C85-635D0229778A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4528906-51ED-4B2B-8C85-635D0229778A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723E41AD-CB21-4FEC-B04E-B47A440F7CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723E41AD-CB21-4FEC-B04E-B47A440F7CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723E41AD-CB21-4FEC-B04E-B47A440F7CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723E41AD-CB21-4FEC-B04E-B47A440F7CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C6747D9-D63C-4BE8-ACD5-ACE8F0292F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6747D9-D63C-4BE8-ACD5-ACE8F0292F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6747D9-D63C-4BE8-ACD5-ACE8F0292F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6747D9-D63C-4BE8-ACD5-ACE8F0292F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386FA2B6-37DB-4F75-94CA-542E9BAF0C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386FA2B6-37DB-4F75-94CA-542E9BAF0C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386FA2B6-37DB-4F75-94CA-542E9BAF0C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386FA2B6-37DB-4F75-94CA-542E9BAF0C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED46D03-BE09-44F9-8C74-FF7444E33159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED46D03-BE09-44F9-8C74-FF7444E33159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED46D03-BE09-44F9-8C74-FF7444E33159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED46D03-BE09-44F9-8C74-FF7444E33159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{126AD993-CD74-4194-9710-3C9259BAEA54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{126AD993-CD74-4194-9710-3C9259BAEA54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{126AD993-CD74-4194-9710-3C9259BAEA54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{126AD993-CD74-4194-9710-3C9259BAEA54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99674264-42AD-4CD6-A5E5-8C8829438B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99674264-42AD-4CD6-A5E5-8C8829438B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99674264-42AD-4CD6-A5E5-8C8829438B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99674264-42AD-4CD6-A5E5-8C8829438B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015F0626-F854-4DB4-99E4-1F27C1158192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015F0626-F854-4DB4-99E4-1F27C1158192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{015F0626-F854-4DB4-99E4-1F27C1158192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{015F0626-F854-4DB4-99E4-1F27C1158192}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5CC592B8-00CB-439F-AEEE-D0307580FC0E} = {A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}
+		{25722990-D4D8-45BF-AED5-9EB8456BDE77} = {A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}
+		{23200DF8-44DD-404D-9C48-41D1F6C6D514} = {25722990-D4D8-45BF-AED5-9EB8456BDE77}
+		{B4528906-51ED-4B2B-8C85-635D0229778A} = {A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}
+		{723E41AD-CB21-4FEC-B04E-B47A440F7CB3} = {A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}
+		{8C6747D9-D63C-4BE8-ACD5-ACE8F0292F74} = {A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}
+		{386FA2B6-37DB-4F75-94CA-542E9BAF0C37} = {A3283B17-3CDC-4E67-9694-FBF9E6EBF73E}
+		{6ED46D03-BE09-44F9-8C74-FF7444E33159} = {A3283B17-3CDC-4E67-9694-FBF9E6EBF73E}
+		{126AD993-CD74-4194-9710-3C9259BAEA54} = {A3283B17-3CDC-4E67-9694-FBF9E6EBF73E}
+		{99674264-42AD-4CD6-A5E5-8C8829438B7E} = {A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}
+		{015F0626-F854-4DB4-99E4-1F27C1158192} = {A86FC0E1-7544-4495-9A45-3D1E0A1BCD91}
+	EndGlobalSection
+EndGlobal
