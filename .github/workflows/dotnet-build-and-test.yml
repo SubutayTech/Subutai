@@ -1,10 +1,12 @@
-name: dotnet build
+name: .NET Build and Test
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - master
   pull_request:
-    branches: ["master"]
+    branches:
+      - master
 
 jobs:
   build:
@@ -17,6 +19,8 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
+      - name: Restore required workloads
+        run: dotnet workload restore
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
