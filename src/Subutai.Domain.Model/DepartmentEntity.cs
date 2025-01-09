@@ -2,7 +2,7 @@ using Subutai.Domain.Model.Auditing;
 
 namespace Subutai.Domain.Model;
 
-public class Department : IHasCreationTime, IHasModificationTime, IHasDeletionTime
+public class DepartmentEntity : IHasCreationTime, IHasModificationTime, IHasDeletionTime
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;

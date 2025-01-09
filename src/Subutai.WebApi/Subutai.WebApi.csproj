@@ -4,4 +4,8 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../Repositories/Subutai.Repository.SqlRepository/Subutai.Repository.SqlRepository.csproj" />
+  </ItemGroup>
+
 </Project>
