@@ -4,4 +4,8 @@
     <ProjectReference Include="../../Subutai.Domain.Ports/Subutai.Domain.Ports.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
+  </ItemGroup>
+
 </Project>
