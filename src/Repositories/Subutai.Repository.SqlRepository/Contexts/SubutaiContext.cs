@@ -1,5 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Subutai.Domain.Model;
 
 namespace Subutai.Repository.SqlRepository.Contexts;
@@ -16,5 +17,6 @@ public class SubutaiContext : DbContext, ISubutaiContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.Entity<ProjectEntity>().Property(p => p.CreatedAt).ValueGeneratedOnAdd() .IsRequired();
     }
 }
