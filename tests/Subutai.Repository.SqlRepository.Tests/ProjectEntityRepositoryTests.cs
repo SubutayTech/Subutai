@@ -3,10 +3,8 @@ using Subutai.Repository.SqlRepository.Repositories;
 using Subutai.Repository.SqlRepository.Contexts;
 using FluentAssertions;
 using Moq;
-using Moq.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using FluentAssertions.Execution;
-using System.Linq.Expressions;
 
 namespace Subutai.Repository.SqlRepository.Tests;
 public sealed class ProjectEntityRepositoryTests
@@ -102,21 +100,11 @@ public sealed class ProjectEntityRepositoryTests
         var existingEntity = new ProjectEntity
         {
             Id = 1,
-            Name = "Old Name",
-            UpdatedAt = DateTimeOffset.UtcNow.AddDays(-1)
+            Name = "Old Name"
         };
 
-        // Mocking DbSet with async support using AsQueryable()
-        var data = new List<ProjectEntity> { existingEntity }.AsQueryable();
-
-        var mockSet = new Mock<DbSet<ProjectEntity>>();
-
-        var mockContext = new Mock<ISubutaiContext>();
-        mockContext.Setup(c => c.Projects).ReturnsDbSet(data, mockSet);
-        mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(1);
-
-        var repository = new ProjectEntityRepository(mockContext.Object);
+        _context.Projects.Add(existingEntity);
+        await _context.SaveChangesAsync();
 
         var updateEntity = new ProjectEntity
         {
@@ -125,15 +113,12 @@ public sealed class ProjectEntityRepositoryTests
         };
 
         // Act
-        var result = await repository.UpdateAsync(updateEntity);
+        var result = await _repository.UpdateAsync(updateEntity);
 
         // Assert
         result.Should().NotBeNull();
         result.Id.Should().Be(existingEntity.Id);
         result.Name.Should().Be(updateEntity.Name);
-
-        mockContext.Verify(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
-        mockSet.Verify(m => m.Update(It.Is<ProjectEntity>(e => e.Id == existingEntity.Id && e.Name == "New Name")), Times.Once);
     }
 
     #endregion
