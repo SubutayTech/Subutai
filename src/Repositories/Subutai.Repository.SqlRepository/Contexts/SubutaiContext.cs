@@ -17,6 +17,5 @@ public class SubutaiContext : DbContext, ISubutaiContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        modelBuilder.Entity<ProjectEntity>().Property(p => p.CreatedAt).ValueGeneratedOnAdd() .IsRequired();
     }
 }

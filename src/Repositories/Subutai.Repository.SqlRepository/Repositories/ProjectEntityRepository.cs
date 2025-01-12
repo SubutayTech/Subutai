@@ -28,7 +28,12 @@ public class ProjectEntityRepository : IProjectEntityRepository
           throw new ArgumentException("Entity not found");
        } 
         singleEntity.Name = entity.Name;
+        singleEntity.Description = entity.Description;
+        singleEntity.Reference = entity.Reference;
+        singleEntity.DateCompleted = entity.DateCompleted;
+        singleEntity.DateStarted = entity.DateStarted;
         singleEntity.UpdatedAt = DateTimeOffset.UtcNow;
+        singleEntity.DepartmentId = entity.DepartmentId;
         _context.Projects.Update(singleEntity);
         await _context.SaveChangesAsync();
 
