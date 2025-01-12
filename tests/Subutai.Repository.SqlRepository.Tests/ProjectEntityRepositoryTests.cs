@@ -18,7 +18,6 @@ public sealed class ProjectEntityRepositoryTests
         _context = context;
         _repository = new ProjectEntityRepository(_context);
     }
-
     #region add method test 
     [Fact]
     public async Task AddAsync_ShouldAddProjectEntity()
@@ -117,6 +116,8 @@ public sealed class ProjectEntityRepositoryTests
         var result = await _repository.UpdateAsync(updateEntity);
 
         // Assert
+        using (new AssertionScope())
+        {
         result.Should().NotBeNull();
         result.Id.Should().Be(existingEntity.Id);
         result.Name.Should().Be(updateEntity.Name);
@@ -125,6 +126,7 @@ public sealed class ProjectEntityRepositoryTests
         result.DateStarted.Should().Be(updateEntity.DateStarted);
         result.DepartmentId.Should().Be(updateEntity.DepartmentId);
         result.UpdatedAt.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
+        }
     }
 
     [Fact]
@@ -162,9 +164,7 @@ public sealed class ProjectEntityRepositoryTests
 
         };
         _context.Projects.Add(newEntity);
-        await _context.SaveChangesAsync();
-
-        // Act
+        await _context.SaveChangesAsync(); 
         var SecondEntity = new ProjectEntity()
         {   Id = projectId,
             Name = "Second project",
@@ -172,15 +172,20 @@ public sealed class ProjectEntityRepositoryTests
             UpdatedAt = projectUpdateTime,
             CreatedAt = DateTimeOffset.UtcNow
         };
+
+        // Act
         await _repository.UpdateAsync(SecondEntity);
         var result = await _context.Projects.FindAsync(projectId);
 
          // Assert
+         using (new AssertionScope())
+         {
         result.Should().NotBeNull();
         result.CreatedAt.Should().Be(projectCreatedTime, because: "CreatedAt should remain unchanged after an update");
         result.Name.Should().Be(SecondEntity.Name);
         result.Description.Should().Be(SecondEntity.Description);
         result.UpdatedAt.Should().NotBe(projectUpdateTime);   
+         }
     }
     #endregion
 }
