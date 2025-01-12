@@ -1,5 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Subutai.Domain.Model;
 
 namespace Subutai.Repository.SqlRepository.Contexts;

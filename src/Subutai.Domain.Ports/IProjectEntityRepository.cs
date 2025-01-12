@@ -5,4 +5,5 @@ namespace Subutai.Domain.Ports;
 public interface IProjectEntityRepository
 {
     Task<ProjectEntity> AddAsync(ProjectEntity entity);
+    Task<ProjectEntity> UpdateAsync(ProjectEntity entity);
 }
