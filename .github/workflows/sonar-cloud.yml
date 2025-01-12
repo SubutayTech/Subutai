@@ -41,6 +41,9 @@ jobs:
         shell: pwsh
         run: |
           dotnet workload restore
+      - name: Install dotnet-coverage
+        shell: pwsh
+        run: dotnet tool install --global dotnet-coverage
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
