@@ -181,7 +181,7 @@ public sealed class ProjectEntityRepositoryTests
          using (new AssertionScope())
          {
         result.Should().NotBeNull();
-        result.CreatedAt.Should().Be(projectCreatedTime, because: "CreatedAt should remain unchanged after an update");
+        result!.CreatedAt.Should().Be(projectCreatedTime, because: "CreatedAt should remain unchanged after an update");
         result.Name.Should().Be(SecondEntity.Name);
         result.Description.Should().Be(SecondEntity.Description);
         result.UpdatedAt.Should().NotBe(projectUpdateTime);   
