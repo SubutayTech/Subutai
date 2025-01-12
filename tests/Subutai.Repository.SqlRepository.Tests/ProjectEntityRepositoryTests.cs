@@ -95,6 +95,7 @@ public sealed class ProjectEntityRepositoryTests
     #region update method test
     [Fact]
     public async Task UpdateAsync_ShouldUpdateProjectEntity()
+
     {
         // Arrange
         var existingEntity = new ProjectEntity
@@ -120,6 +121,62 @@ public sealed class ProjectEntityRepositoryTests
         result.Id.Should().Be(existingEntity.Id);
         result.Name.Should().Be(updateEntity.Name);
     }
+     [Fact]
+    public async Task UpdateAsync_ShouldThrowArgumentException_WhenEntityNotFound()
+    {
+    // Arrange
+    var ExistentEntity = new ProjectEntity { Id = 1, Description="first Name" };
+    var nonExistentEntity = new ProjectEntity{Id = 99, Description ="Second name"};
 
+    _context.Projects.Add(ExistentEntity);
+    await _context.SaveChangesAsync();
+
+
+    // Act
+    var act = async () => await _repository.UpdateAsync(nonExistentEntity);
+
+    // Assert
+    await act.Should().ThrowAsync<ArgumentException>().WithMessage("Entity not found");
+    }
+    [Fact]
+    public async Task UpdateAsync_ShouldReturnProjectEntityCreatedTimeImmutable()
+    {
+        // Arrange
+        var projectId = 1;
+        var projectName = "Test Project";
+        var projectDescription = "Test Description";
+        var projectUpdateTime = DateTimeOffset.UtcNow;
+        var projectCreatedTime = DateTimeOffset.UtcNow.AddDays(-1);
+        var newEntity = new ProjectEntity()      
+        {
+            Id = projectId,
+            Name = projectName,
+            Description = projectDescription,
+            UpdatedAt = projectUpdateTime,
+            CreatedAt = projectCreatedTime,
+            
+        };
+        _context.Projects.Add(newEntity);
+        await _context.SaveChangesAsync();
+        // Act
+        var SecondEntity = new ProjectEntity()
+        {   Id = projectId,
+            Name = "Second project",
+            Description = projectDescription,
+            UpdatedAt = projectUpdateTime,
+            CreatedAt = DateTimeOffset.UtcNow
+        };
+
+        await _repository.UpdateAsync(SecondEntity);
+
+        var result = await _context.Projects.FindAsync(projectId);
+
+         // Assert
+        result.Should().NotBeNull();
+        result.CreatedAt.Should().Be(projectCreatedTime, because: "CreatedAt should remain unchanged after an update");
+        result.Name.Should().Be(SecondEntity.Name);
+        result.Description.Should().Be(SecondEntity.Description);
+        result.UpdatedAt.Should().NotBe(projectUpdateTime);   
+    }
     #endregion
 }

@@ -24,15 +24,14 @@ public class ProjectEntityRepository : IProjectEntityRepository
         var singleEntity = await _context.Projects.FirstOrDefaultAsync(e => e.Id == entity.Id);
 
         if (singleEntity == null)
-        {
-            throw new ArgumentNullException(nameof(entity));
-        }
-
+       {
+          throw new ArgumentException("Entity not found");
+       } 
         singleEntity.Name = entity.Name;
         singleEntity.UpdatedAt = DateTimeOffset.UtcNow;
         _context.Projects.Update(singleEntity);
-
         await _context.SaveChangesAsync();
+
         return singleEntity;
     }
 }
