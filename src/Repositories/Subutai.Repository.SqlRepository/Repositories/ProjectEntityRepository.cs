@@ -38,5 +38,16 @@ public class ProjectEntityRepository : IProjectEntityRepository
         await _context.SaveChangesAsync();
 
         return singleEntity;
+    }   
+    public async Task<ProjectEntity> DeleteAsync(ProjectEntity entity)
+    {
+        var singleEntity = await _context.Projects.FirstOrDefaultAsync(e => e.Id == entity.Id);
+
+        if(singleEntity == null)
+        {
+            throw new ArgumentException("Entity is not found");
+        }
+        singleEntity.DeletedAt = DateTimeOffset.UtcNow;
+        return singleEntity;
     }
 }
