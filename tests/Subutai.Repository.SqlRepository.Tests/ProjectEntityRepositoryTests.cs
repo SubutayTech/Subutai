@@ -5,6 +5,7 @@ using FluentAssertions;
 using Moq;
 using Microsoft.EntityFrameworkCore;
 using FluentAssertions.Execution;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace Subutai.Repository.SqlRepository.Tests;
 public sealed class ProjectEntityRepositoryTests
@@ -186,6 +187,52 @@ public sealed class ProjectEntityRepositoryTests
         result.Description.Should().Be(SecondEntity.Description);
         result.UpdatedAt.Should().NotBe(projectUpdateTime);   
          }
+    }
+    #endregion
+    #region delete method test
+    
+    [Fact]
+    public async Task DeleteAsync_ShouldThrowArgumentException_WhenEntityNotFound()
+    {
+
+        // Arrange
+        var firstEntity = new ProjectEntity(){ Id = 1, Name = "firstEntity"};
+        var deleteEntity = new ProjectEntity(){ Id = 2, Name = "deletedEntiy"};
+
+        _context.Projects.Add(firstEntity);
+        await _context.SaveChangesAsync();
+
+        // Act     
+        var act = async() => await _repository.DeleteAsync(deleteEntity);
+
+        // Assert
+        using(new AssertionScope())
+        {await act.Should().ThrowAsync<ArgumentException>().WithMessage("Entity is Not Found");}
+    }
+
+    [Fact]
+    public async Task DeleteAsync_ShouldReturnProject_DeletedTimeControl()
+    {
+
+        // Arrange
+        var entityID = 1;
+        var entityName = "firstEntity";
+        var deletedTime = DateTimeOffset.UtcNow;
+
+        
+        var firstEntity = new ProjectEntity(){ Id = entityID,Name = entityName};
+        await _context.Projects.AddAsync(firstEntity);
+        await _context.SaveChangesAsync();
+
+        // Act
+        var result = await _repository.DeleteAsync(firstEntity);
+
+        // Assert
+        using(new AssertionScope())
+        {
+            result.Should().NotBeNull();
+            result.DeletedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(1));
+        }
     }
     #endregion
 }
